@@ -8,7 +8,7 @@ export default function Customer({ setRestaurantData }) {
   async function newCustomers(event) {
     event.preventDefault();
     console.log(event.target.form[0].value);
-    const res = await fetch("http://127.0.0.1:5000/api/tables", {
+    const res = await fetch("api/tables", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

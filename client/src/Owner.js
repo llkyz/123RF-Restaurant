@@ -24,7 +24,7 @@ export default function Owner({ restaurantData, setRestaurantData }) {
       }
       tableArray.push(chairArray);
     }
-    const res = await fetch("http://127.0.0.1:5000/api/tables", {
+    const res = await fetch("api/tables", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ export default function Owner({ restaurantData, setRestaurantData }) {
     for (let x = 0; x < newTables[tableIndex].length; x++) {
       newTables[tableIndex][x] = false;
     }
-    const res = await fetch("http://127.0.0.1:5000/api/tables", {
+    const res = await fetch("api/tables", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -62,7 +62,7 @@ export default function Owner({ restaurantData, setRestaurantData }) {
   }
 
   async function resetQueue() {
-    const res = await fetch("http://127.0.0.1:5000/api/tables", {
+    const res = await fetch("api/tables", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +79,7 @@ export default function Owner({ restaurantData, setRestaurantData }) {
   }
 
   async function assignQueue(index, queueNum) {
-    const res = await fetch("http://127.0.0.1:5000/api/queue", {
+    const res = await fetch("api/queue", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -107,7 +107,7 @@ export default function Owner({ restaurantData, setRestaurantData }) {
   }
 
   async function removeQueue(index, queueNum) {
-    const res = await fetch("http://127.0.0.1:5000/api/queue", {
+    const res = await fetch("api/queue", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

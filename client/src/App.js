@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch("http://127.0.0.1:5000/api/tables", {
+      const res = await fetch("api/tables", {
         method: "GET",
       });
       let result = await res.json();
