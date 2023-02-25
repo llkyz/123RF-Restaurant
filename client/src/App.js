@@ -15,12 +15,9 @@ function App() {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(
-        "https://cloudy-gaiters-dog.cyclic.app/api/tables",
-        {
-          method: "GET",
-        }
-      );
+      const res = await fetch("api/tables", {
+        method: "GET",
+      });
       let result = await res.json();
       setRestaurantData(result);
     }
