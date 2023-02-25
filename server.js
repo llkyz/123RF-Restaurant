@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const db = mongoose.connection;
 const cors = require("cors");
+const path = require("path");
 const Table = require("./models/tables");
 require("dotenv").config();
 let mongoURI = process.env.DATABASE;
