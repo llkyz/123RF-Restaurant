@@ -8,15 +8,18 @@ export default function Customer({ setRestaurantData }) {
   async function newCustomers(event) {
     event.preventDefault();
     console.log(event.target.form[0].value);
-    const res = await fetch("api/tables", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        headcount: event.target.form[0].value,
-      }),
-    });
+    const res = await fetch(
+      "https://cloudy-gaiters-dog.cyclic.app/api/tables",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          headcount: event.target.form[0].value,
+        }),
+      }
+    );
     let result = await res.json();
     console.log(result);
     setRestaurantData(result.update);

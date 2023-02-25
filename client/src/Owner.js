@@ -24,17 +24,20 @@ export default function Owner({ restaurantData, setRestaurantData }) {
       }
       tableArray.push(chairArray);
     }
-    const res = await fetch("api/tables", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        tableCount: event.target.form[0].value,
-        chairCount: event.target.form[1].value,
-        tables: tableArray,
-      }),
-    });
+    const res = await fetch(
+      "https://cloudy-gaiters-dog.cyclic.app/api/tables",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          tableCount: event.target.form[0].value,
+          chairCount: event.target.form[1].value,
+          tables: tableArray,
+        }),
+      }
+    );
     let result = await res.json();
     setRestaurantData(result);
     setUpdateTableCount(result.tableCount);
@@ -46,13 +49,16 @@ export default function Owner({ restaurantData, setRestaurantData }) {
     for (let x = 0; x < newTables[tableIndex].length; x++) {
       newTables[tableIndex][x] = false;
     }
-    const res = await fetch("api/tables", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ tables: newTables }),
-    });
+    const res = await fetch(
+      "https://cloudy-gaiters-dog.cyclic.app/api/tables",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ tables: newTables }),
+      }
+    );
     if (res.ok) {
       console.log("Table cleared");
       setRestaurantData(await res.json());
@@ -62,13 +68,16 @@ export default function Owner({ restaurantData, setRestaurantData }) {
   }
 
   async function resetQueue() {
-    const res = await fetch("api/tables", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ queueNum: 1, queueArr: [] }),
-    });
+    const res = await fetch(
+      "https://cloudy-gaiters-dog.cyclic.app/api/tables",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ queueNum: 1, queueArr: [] }),
+      }
+    );
     if (res.ok) {
       console.log("Queue reset");
       setQueueMessage();
@@ -79,7 +88,7 @@ export default function Owner({ restaurantData, setRestaurantData }) {
   }
 
   async function assignQueue(index, queueNum) {
-    const res = await fetch("api/queue", {
+    const res = await fetch("https://cloudy-gaiters-dog.cyclic.app/api/queue", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -107,7 +116,7 @@ export default function Owner({ restaurantData, setRestaurantData }) {
   }
 
   async function removeQueue(index, queueNum) {
-    const res = await fetch("api/queue", {
+    const res = await fetch("https://cloudy-gaiters-dog.cyclic.app/api/queue", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
