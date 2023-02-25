@@ -13,6 +13,7 @@ mongoose.set("debug", true);
 mongoose.connect(mongoURI);
 db.on("open", () => console.log("MongoDB connection established"));
 
+app.use(express.static(path.join(__dirname, "./client/build")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
@@ -137,6 +138,10 @@ app.delete("/api/queue", async function (req, res) {
   } catch {
     res.status(400).json("An error occurred");
   }
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 mongoose.connection.once("open", () => {
